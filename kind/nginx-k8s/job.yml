@@ -1,0 +1,23 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: hello-job
+  namespace: ns4-nginx
+
+spec:
+  completions: 1
+  parallelism: 1
+  template:
+    
+    metadata: 
+      name: hello-job
+      labels:
+        app: batch-task
+    
+    spec:
+      containers:
+      - name: hello-job
+        image: busybox
+        command: ["sh","-c", "echo hello, printed from job.yml && sleep 10"]
+      restartPolicy: Never         
+
