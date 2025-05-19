@@ -1,0 +1,11 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: mysql-conf-map
+  namespace: mysql
+
+data:
+  # MYSQL_ROOT_PASSWORD: "XXXX"
+  MYSQL_DATABASE: "devops"
+  # MYSQL_USER: "XXXX"
+  # MYSQL_PASSWORD: "XXXX"
