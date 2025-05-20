@@ -46,6 +46,47 @@
 19. secret file... well don't go on name of the file, coz this file is use jsut for computer binay coded purpose. **this file won't serve as security purpose** anyone can easy do `base64` encode/decode.
 
 
+#### scaling and scheduling
+* **resourse quota**
+- Req and Req quotas helps to define which pod can take how much resourse on a machine. i.e. storage,ram and more...
+- you need to define res -> reqs and limits there you will define CPU and Memory and more...
+
+* **Probs**
+- Tyes of prob:
+    1. liveness prob
+    2. readiness prob 
+    3. startup prob
+- prob is the request for checking whether your app is workning or not nothing else.
+
+#### Taints / Tolerations
+* Taint: it is a way to tell scheduler "hey!! you are not allowed to create pods on a perticular node"
+* Tolerans: by using it you can **still create pods on tainted node**. find command at command section.
+
+#### HPA: Horizontal Pod Autoscaling 
+* you  are increasing replicas of the pod like current you have 2 but while scaling you make it 4 or 5...
+#### VPA: Vertical Pod Autoscaling
+* you are increasing resourses of a single pod, like CPU,Memory and more... make pod more powerful.
+#### KEDA: Kubernetes Event Driven Autoscaling
+* KEDA will select HPA/VPA base on `metrics` readings.
+
+* #### Metrics
+- Get metrics for KIND: `kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml`
+- yes you can apply `.yml` from a git repo too it will work fine.
+- you need to bypass the security defences so edit deployment file. 
+
+`kubectl -n kube-system edit deployment metrics-server` 
+- Add the security bypass to deployment under `container.args`
+
+```yml
+- --kubelet-insecure-tls
+- --kubelet-preferred-address-types=InternalIP,Hostname,ExternalIP
+```
+
+- restart deployment: `kubectl -n kube-system rollout restart deployment metrics-server` and do veriyfication 
+
+#### apache
+- **Note:** `http://<service-name>.<namepace>.svc.cluster.local` is the domain name inside a pod you can do `curl` on this domain. e.x : `curl http://apache-service.apache.svc.cluster.local` this is domain for service `apache-service` and `apache` namespace. it works only inside a pod not for external usage. 
+
 ## COMMANDS wih QUESTIONS
 
 ### kubectl
@@ -66,6 +107,7 @@
 `kubectl create ns name-of-namespace`
 `kubectl run nginx --image=nginx`
 `kubectl run nginx --image=nginx -n name-of-namespace`
+`kubectl run -it load-generator --image=busybox -n apache -- bash`
 `kubectl delete pod nginx`
 `kubectl delete pod nginx -n name-of-namespace`
 `kubectl delete ns name-of-namespace`
@@ -106,6 +148,10 @@
 `kubectl get configmap -n name-of-namespace`
 `kubectl get secret -n name-of-namespace`
 
+> Taint
+
+`kubectl taint node name-of-node prod=true:NoSchedule`
+`kubectl taint node name-of-node prod=true:NoSchedule-`
 
 <hr>
 

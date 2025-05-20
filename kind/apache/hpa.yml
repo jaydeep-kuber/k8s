@@ -1,0 +1,22 @@
+kind: HorizontalPodAutoscaler
+apiVersion: autoscaling/v2
+metadata: 
+  name: apache-hpa
+  namespace: apache
+
+spec:
+  scaleTargetRef: # kisko scale karna hai ... deployment, statefulset, replicaset 
+    kind: Deployment
+    name: apache-deployment
+    apiVersion: apps/v1
+
+  minReplicas: 1
+  maxReplicas: 5
+
+  metrics: # kis bases pe ye replicas banaye ?
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 5
