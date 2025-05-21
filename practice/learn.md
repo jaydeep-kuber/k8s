@@ -87,6 +87,19 @@
 #### apache
 - **Note:** `http://<service-name>.<namepace>.svc.cluster.local` is the domain name inside a pod you can do `curl` on this domain. e.x : `curl http://apache-service.apache.svc.cluster.local` this is domain for service `apache-service` and `apache` namespace. it works only inside a pod not for external usage. 
 
+
+#### Node affinity
+- a mechanism that allows you to specify rules for pod scheduling based on node labels.providing more control over where pods are placed in a cluster 
+- Affinity is some kind of like actions which performed to attract someone to something. e.x. if you want to create a pod on a node then specidy node infomation to pod so it can attract twards node.
+
+
+#### RBAC : Role Based Access Control
+* Before RBAC we have to know about, serive account and user account
+- - service account are on level of namespaces
+    |- for that we need to know **roles and role bindings**
+- - user account are usually on level of cluster.
+    |- for that we need to know **cluster role and cluster role bindings**
+
 ## COMMANDS wih QUESTIONS
 
 ### kubectl
@@ -112,16 +125,20 @@
 `kubectl delete pod nginx -n name-of-namespace`
 `kubectl delete ns name-of-namespace`
 `kubectl apply -f yml-file-name`
+
 > we are using apply because apply do both create and update but create do only creation.
 
 `kubectl exec -it pods/name-of-pod -n name-of-namespace -- bash`
+
 > nake sure use a space between `-- bash`
 
 `kubectl describe pod/name-of-pod -n name-of-namespace`
+
 > deployment
 
 `kubectl get deployment -n name-of-namespace`
 `kubectl scale deployment/name-of-deployment -n name-of-namespace --replicas=5`
+
 >> rolling updates
 
 `kubectl set image deployment/name-of-deployment -n name-of-namespace name-of-container=name-of-image:tag/version`
@@ -152,6 +169,16 @@
 
 `kubectl taint node name-of-node prod=true:NoSchedule`
 `kubectl taint node name-of-node prod=true:NoSchedule-`
+
+> get info of cuurent user
+
+`kuberctl auth whoami`
+`kubectl auth can-i get pods`
+`kubectl auth can-i get pods -n name-of-namespace`
+`kubectl auth can-i get pods -n name-of-namespace --as=user_name`
+`kubectl get role -n name-of-namespace`
+`kubectl get serviceaccount -n name-of-namespace`
+`kubectl get rolebinding -n name-of-namespace`
 
 <hr>
 
