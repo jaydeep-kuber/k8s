@@ -100,6 +100,9 @@
 - - user account are usually on level of cluster.
     |- for that we need to know **cluster role and cluster role bindings**
 
+#### Dashbosrd
+- 
+
 ## COMMANDS wih QUESTIONS
 
 ### kubectl
@@ -179,6 +182,13 @@
 `kubectl get role -n name-of-namespace`
 `kubectl get serviceaccount -n name-of-namespace`
 `kubectl get rolebinding -n name-of-namespace`
+
+
+> create token
+
+`kubectl -n kubernetes-dashboard create token admin-user`
+
+
 
 <hr>
 
