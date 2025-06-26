@@ -103,6 +103,12 @@
 #### Dashbosrd
 - 
 
+#### Custome resouece defination (CRDs)
+- CRDs are used to define own custom resources that can be used in Kubernetes. i.e. kind:jkGroups, apiVersion: v1, name: mygroup, spec: {}
+
+#### HELM
+- HELM is a package manager for Kubernetes. it is used to install and manage applications on Kubernetes.
+
 ## COMMANDS wih QUESTIONS
 
 ### kubectl
@@ -113,7 +119,7 @@
     # or 
     kubectl get ns
 ```
-`kubectl cluster-info --context=kind-name-of-cluster`
+`kubectl cluster-info --context=kind-{name-of-cluster}`
 `kubectl get pods`
 `kubectl get pods -n name-of-namespace`
 
@@ -188,7 +194,23 @@
 
 `kubectl -n kubernetes-dashboard create token admin-user`
 
+> get custom res defination
+`kubectl apply -f custom-resource-definition.yaml`
+`kubectl get crd`
+`kubectl describe {crd-name} {cr}`
 
+> HELM
+
+`helm create {apache-helm}`
+`helm package {apache-helm-path}`
+`helm install {apache-helm-name} {apache-helmPack-path}`
+`helm install {apache-helm-name} {apache-helmPack-path} -n {apache-namespase} --create-namespace`
+`helm upgrade {apache-helm-name} {apache-helmPack-path} -n {apache-namespase}`
+`helm rollback {apache-namespace} 1 -n prd-apache`
+`helm uninstall {apache-helm-name}`
+`helm search repo {repo-name}`
+`helm repo add {repo-name} {repo-url}`
+`helm list -n {namespace-name}`
 
 <hr>
 

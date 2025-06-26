@@ -1,0 +1,8 @@
+kind: DevOps
+apiVersion: devops.dev/v1
+metadata:
+  name: jay-devops
+spec:
+  name: jaydeep-kuber
+  company: xyz
+  location: adb-guj

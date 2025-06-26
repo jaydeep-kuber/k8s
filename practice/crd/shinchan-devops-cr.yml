@@ -1,0 +1,8 @@
+kind: DevOps
+apiVersion: devops.dev/v1
+metadata:
+  name: shinchan-devops
+spec:
+  name: shinchan-nohara
+  company: xyz
+  location: kasukabe
