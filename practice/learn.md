@@ -109,6 +109,11 @@
 #### HELM
 - HELM is a package manager for Kubernetes. it is used to install and manage applications on Kubernetes.
 
+
+# Side car container / init container.
+1. self explainetory init is a container which do initilization work like prereqs fullfilment. 
+2. sidecare container is a like having assistent for main, ex. log container for main apk.
+
 ## COMMANDS wih QUESTIONS
 
 ### kubectl
