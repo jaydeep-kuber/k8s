@@ -254,6 +254,19 @@
 
 - To create pod we need to have image on docker hub. so create images of backend and frontend and push them in docker for mongoDB we will pick image from docker hub.
 - Create a directory named **k8s** in same project working directory.
->Files we needed,
+> Files we needed,
+> **NOTE**: timestamp is not accurate but near to section.
 > 1. namespace.yml - 09:26:00
-> backend-deployment.yml 
+> 2. backend-deployment.yml - 09:28:00
+> 3. frontend-deployment.yml - 09:26:00
+> 4. mongodb-deployment.yml - 09:34:00
+> 5. mongodb-pv.yml - 09:36:00
+> 6. mongodb-pvc.yml - 09:38:00
+> 7. frontend-service.yml - 09:42:00
+> 8. Backend-service.yml - 09:45:00
+> 9. MongoDB-service.yml - 09:50:00
+> 10. secret.yml - 10:02:00 (we need to convert jwt in base64 from online encoder)
+
+- till this point everyting working fine. on localhost not time to get **ingress** in picture
+> 11. ingress.yml 
+> `minikube addones enable ingress`
