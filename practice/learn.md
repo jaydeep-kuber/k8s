@@ -110,9 +110,13 @@
 - HELM is a package manager for Kubernetes. it is used to install and manage applications on Kubernetes.
 
 
-# Side car container / init container.
+#### Side car container / init container.
 1. self explainetory init is a container which do initilization work like prereqs fullfilment. 
 2. sidecare container is a like having assistent for main, ex. log container for main apk.
+
+#### Service Mesh
+- Service mesh gives a gateway for managing service communication and routing.
+- popular tool for manage service mesh is **istio**
 
 ## COMMANDS wih QUESTIONS
 
@@ -233,4 +237,23 @@
 > what is kind?
 > why kind?
 
-Time stamp: 2:21:28
+<hr>
+
+## Project-1 Chat Apllication on k8s - 3 Tier [ **Minikube** ]
+- Frontend: React
+- Backend: node
+- Database: mongoDB
+
+> [github_Link](https://github.com/iemafzalhassan/full-stack_chatApp.git)
+
+- start the minkube
+```bash
+    minicube start --driver=docker
+    # install minikube, if you don't have it
+```
+
+- To create pod we need to have image on docker hub. so create images of backend and frontend and push them in docker for mongoDB we will pick image from docker hub.
+- Create a directory named **k8s** in same project working directory.
+>Files we needed,
+> 1. namespace.yml - 09:26:00
+> backend-deployment.yml 

@@ -7,7 +7,7 @@ spec:
   volume:
   - name: shared-logs
     emptyDir: {}
-
+    
   containers:
   - name: main-apk
     image: busybox:latest
