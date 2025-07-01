@@ -121,29 +121,34 @@
 ## COMMANDS wih QUESTIONS
 
 ### kubectl
-`kubectl verison`
-`kubectl get nodes`
+```bash
+    kubectl verison
+    kubectl get nodes
+```
 ``` bash
     kubectl get namespace
     # or 
     kubectl get ns
 ```
-`kubectl cluster-info --context=kind-{name-of-cluster}`
-`kubectl get pods`
-`kubectl get pods -n name-of-namespace`
+```bash
+    kubectl cluster-info --context=kind-{name-of-cluster}
+    kubectl get pods
+    kubectl get pods -n name-of-namespace
+```
 
 > to get more info on pods.
 
-`kubectl get pods -n name-ofnamespace -o wide` 
-`kubectl create ns name-of-namespace`
-`kubectl run nginx --image=nginx`
-`kubectl run nginx --image=nginx -n name-of-namespace`
-`kubectl run -it load-generator --image=busybox -n apache -- bash`
-`kubectl delete pod nginx`
-`kubectl delete pod nginx -n name-of-namespace`
-`kubectl delete ns name-of-namespace`
-`kubectl apply -f yml-file-name`
-
+```bash
+    kubectl get pods -n name-ofnamespace -o wide 
+    kubectl create ns name-of-namespace
+    kubectl run nginx --image=nginx
+    kubectl run nginx --image=nginx -n name-of-namespace
+    kubectl run -it load-generator --image=busybox -n apache -- bash
+    kubectl delete pod nginx
+    kubectl delete pod nginx -n name-of-namespace
+    kubectl delete ns name-of-namespace
+    kubectl apply -f yml-file-name
+```
 > we are using apply because apply do both create and update but create do only creation.
 
 `kubectl exec -it pods/name-of-pod -n name-of-namespace -- bash`
@@ -153,21 +158,22 @@
 `kubectl describe pod/name-of-pod -n name-of-namespace`
 
 > deployment
-
-`kubectl get deployment -n name-of-namespace`
-`kubectl scale deployment/name-of-deployment -n name-of-namespace --replicas=5`
-
->> rolling updates
-
-`kubectl set image deployment/name-of-deployment -n name-of-namespace name-of-container=name-of-image:tag/version`
-`kubectl get job -n name-of-namespace`
-`kubectl logs pods/name-of-pod -n name-of-namespace`
-
+```bash
+    kubectl get deployment -n name-of-namespace
+    kubectl scale deployment/name-of-deployment -n name-of-namespace --replicas=5
+```
+> rolling updates
+```bash
+    kubectl set image deployment/name-of-deployment -n name-of-namespace name-of-container=name-of-image:tag/version
+    kubectl get job -n name-of-namespace
+    kubectl logs pods/name-of-pod -n name-of-namespace
+```
 > persistent volumes
 
-`kubectl get pv`
-`kubectl get pv -n name-of-namespace`
-
+```bash
+    kubectl get pv
+    kubectl get pv -n name-of-namespace
+```
 > port forwarding
 
 ```bash 
@@ -179,47 +185,52 @@
 
 > Ingress 
 
-`kubectl get ing -n name-of-namespace`
-`kubectl get configmap -n name-of-namespace`
-`kubectl get secret -n name-of-namespace`
+```bash
+    kubectl get ing -n name-of-namespace
+    kubectl get configmap -n name-of-namespace
+    kubectl get secret -n name-of-namespace
+```
 
 > Taint
-
-`kubectl taint node name-of-node prod=true:NoSchedule`
-`kubectl taint node name-of-node prod=true:NoSchedule-`
-
+```bash
+    kubectl taint node name-of-node prod=true:NoSchedule
+    kubectl taint node name-of-node prod=true:NoSchedule-
+```
 > get info of cuurent user
-
-`kuberctl auth whoami`
-`kubectl auth can-i get pods`
-`kubectl auth can-i get pods -n name-of-namespace`
-`kubectl auth can-i get pods -n name-of-namespace --as=user_name`
-`kubectl get role -n name-of-namespace`
-`kubectl get serviceaccount -n name-of-namespace`
-`kubectl get rolebinding -n name-of-namespace`
-
+```bash
+    kuberctl auth whoami
+    kubectl auth can-i get pods
+    kubectl auth can-i get pods -n name-of-namespace
+    kubectl auth can-i get pods -n name-of-namespace --as=user_name
+    kubectl get role -n name-of-namespace
+    kubectl get serviceaccount -n name-of-namespace
+    kubectl get rolebinding -n name-of-namespace
+```
 
 > create token
 
 `kubectl -n kubernetes-dashboard create token admin-user`
 
 > get custom res defination
-`kubectl apply -f custom-resource-definition.yaml`
-`kubectl get crd`
-`kubectl describe {crd-name} {cr}`
-
+```bash
+    kubectl apply -f custom-resource-definition.yaml
+    kubectl get crd
+    kubectl describe {crd-name} {cr}
+```
 > HELM
 
-`helm create {apache-helm}`
-`helm package {apache-helm-path}`
-`helm install {apache-helm-name} {apache-helmPack-path}`
-`helm install {apache-helm-name} {apache-helmPack-path} -n {apache-namespase} --create-namespace`
-`helm upgrade {apache-helm-name} {apache-helmPack-path} -n {apache-namespase}`
-`helm rollback {apache-namespace} 1 -n prd-apache`
-`helm uninstall {apache-helm-name}`
-`helm search repo {repo-name}`
-`helm repo add {repo-name} {repo-url}`
-`helm list -n {namespace-name}`
+```bash
+    helm create {apache-helm}
+    helm package {apache-helm-path}
+    helm install {apache-helm-name} {apache-helmPack-path}
+    helm install {apache-helm-name} {apache-helmPack-path} -n {apache-namespase} --create-namespace
+    helm upgrade {apache-helm-name} {apache-helmPack-path} -n {apache-namespase}
+    helm rollback {apache-namespace} 1 -n prd-apache
+    helm uninstall {apache-helm-name}
+    helm search repo {repo-name}
+    helm repo add {repo-name} {repo-url}
+    helm list -n {namespace-name}
+```
 
 <hr>
 
@@ -228,10 +239,10 @@
 > 3. i have a persistent volume of 2 GB in available state, so in this case does system can use this too or is it special for k8s cluster/containers
 
 ### kind
-
-`kind verison`
-`kind create cluster --name=name-of-cluster --config=config.yml`
-
+```bash
+    kind verison
+    kind create cluster --name=name-of-cluster --config=config.yml
+```
 <hr>
 
 > what is kind?
@@ -266,7 +277,6 @@
 > 8. Backend-service.yml - 09:45:00
 > 9. MongoDB-service.yml - 09:50:00
 > 10. secret.yml - 10:02:00 (we need to convert jwt in base64 from online encoder)
-
-- till this point everyting working fine. on localhost not time to get **ingress** in picture
+> - till this point everyting working fine. on localhost not time to get **ingress** in picture
 > 11. ingress.yml 
 > `minikube addones enable ingress`
