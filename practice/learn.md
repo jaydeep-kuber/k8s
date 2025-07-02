@@ -280,3 +280,6 @@
 > - till this point everyting working fine. on localhost not time to get **ingress** in picture
 > 11. ingress.yml 
 > `minikube addones enable ingress`
+
+## Project-2 - Monitoring
+- it was about prometheus and graphana we will do it later. 
